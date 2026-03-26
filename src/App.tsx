@@ -20,45 +20,50 @@ const PRODUCTS: Product[] = [
     id: 1,
     name: "T-SHIRT '10 01' - BLACK",
     price: 29.99,
-    image: "/images/1.jpeg",
+    image: "images/1.jpeg",
     tag: "NEW DROP"
   },
   {
     id: 2,
     name: "T-SHIRT 'GOD'S PLAN' - BLACK",
     price: 29.99,
-    image: "/images/2.jpeg",
+    image: "images/2.jpeg",
     tag: "CLASSIC"
   },
   {
     id: 3,
     name: "GREY 'UVEOCHO' VERTICAL SET",
     price: 54.99,
-    image: "/images/3.jpeg",
+    image: "images/3.jpeg",
     tag: "SET"
   },
   {
     id: 4,
     name: "NAVY 'UVEOCHO' HOODIE",
     price: 59.99,
-    image: "/images/4.jpeg",
+    image: "images/4.jpeg",
     tag: "PREMIUM"
   },
   {
     id: 5,
     name: "OVERSIZED TRACKSUIT",
     price: 89.99,
-    image: "/images/5.jpeg",
+    image: "images/5.jpeg",
     tag: "FULL SET"
   },
   {
     id: 6,
     name: "STREETWEAR ESSENTIALS",
     price: 34.99,
-    image: "/images/7.jpeg",
+    image: "images/7.jpeg",
     tag: "LIMITED"
   }
 ];
+
+const getAssetUrl = (path: string) => {
+  const base = import.meta.env.BASE_URL || '/';
+  return `${base}${path}`;
+};
 
 const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -225,7 +230,7 @@ export default function App() {
                   cart.map(item => (
                     <div key={item.id} className="flex gap-4 group">
                       <div className="w-24 aspect-[3/4] bg-gray-900 brutalist-border overflow-hidden">
-                        <img src={item.image} alt={item.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" referrerPolicy="no-referrer" />
+                        <img src={getAssetUrl(item.image)} alt={item.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" referrerPolicy="no-referrer" />
                       </div>
                       <div className="flex-1 flex flex-col justify-between py-1">
                         <div>
@@ -268,7 +273,7 @@ export default function App() {
       <section className="relative h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/1.jpeg" 
+            src={getAssetUrl("images/1.jpeg")} 
             alt="UVE8 Hero"
             className="w-full h-full object-cover opacity-50 grayscale contrast-125"
             referrerPolicy="no-referrer"
@@ -359,7 +364,7 @@ export default function App() {
             >
               <div className="relative aspect-[3/4] overflow-hidden bg-gray-900 brutalist-border group-hover:shadow-[0_0_30px_rgba(0,255,0,0.3)] transition-shadow duration-500">
                 <img 
-                  src={product.image} 
+                  src={getAssetUrl(product.image)} 
                   alt={product.name}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0 contrast-110"
                   referrerPolicy="no-referrer"
@@ -398,7 +403,7 @@ export default function App() {
               className="relative z-10 brutalist-border overflow-hidden aspect-[4/5]"
             >
               <img 
-                src="/images/3.jpeg" 
+                src={getAssetUrl("images/3.jpeg")} 
                 alt="UVE8 Vibe"
                 className="w-full h-full object-cover grayscale contrast-150 brightness-75"
                 referrerPolicy="no-referrer"
